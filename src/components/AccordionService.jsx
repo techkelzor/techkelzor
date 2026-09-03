@@ -5,32 +5,33 @@ import './AccordionService.css';
 const services = [
   {
     id: 1,
-    title: 'Service 1',
-    subtitle: 'AI-Powered Cinema',
-    description: 'From concept to final cut — powered by AI.',
+    title: 'AI Commercials',
+    description: 'Cinematic advertisements created for brands, products and campaigns.',
   },
   {
     id: 2,
-    title: 'Service 2',
-    subtitle: 'Web Developement',
-    description: 'Smooth, scroll-stopping motion for every platform.',
+    title: 'AI Brand Films',
+    description: 'Stories that build emotion, identity and recall around your brand.',
   },
   {
     id: 3,
-    title: 'Service 3',
-    subtitle: 'Creative Strategy',
-    description: 'Data-informed creative that actually converts.',
+    title: 'AI Product Films',
+    description: 'Put your product in worlds, situations and visual environments that traditional production makes difficult or expensive.',
   },
-  // {
-  //   id: 4,
-  //   title: 'Service 4',
-  //   subtitle: 'Post-Production & VFX',
-  //   description: 'Polish and finesse without the studio overhead.',
-  // },
+  {
+    id: 4,
+    title: 'AI Social Ads',
+    description: 'Short-form commercials designed to stop the scroll and communicate fast.',
+  },
+  {
+    id: 5,
+    title: 'AI Visual Worlds',
+    description: 'From another planet to a world that exists only in your imagination — we build visual concepts without traditional production limitations.',
+  },
 ];
 
 const AccordionService = () => {
-  const [openId, setOpenId] = useState(null);
+  const [openId, setOpenId] = useState(1);
 
   const toggle = (id) => {
     setOpenId(openId === id ? null : id);
@@ -59,7 +60,7 @@ const AccordionService = () => {
             <span className="accordion__number">
               {String(service.id).padStart(2, '0')}
             </span>
-            <span className="accordion__title">{service.subtitle}</span>
+            <span className="accordion__title">{service.title}</span>
             <span className="accordion__icon">
               {openId === service.id ? '−' : '+'}
             </span>

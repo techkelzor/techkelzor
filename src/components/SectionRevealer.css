@@ -1,18 +1,22 @@
 /* ═══════════════════════════════════════════════════
-   Section Revealer — Full page sections
+   Section Revealer — Flow Sections with Optional Full Height
    ═══════════════════════════════════════════════════ */
 
 .section-revealer {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   align-items: center;
   overflow: hidden;
   position: relative;
 }
 
+.section-revealer--full {
+  min-height: 100vh;
+}
+
 .section-revealer__inner {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: var(--section-padding) var(--gutter);
+  padding: clamp(50px, 6vw, 90px) var(--gutter);
   width: 100%;
 }

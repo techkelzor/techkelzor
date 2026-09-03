@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════
-   Accordion Services — Bold headings
+   Accordion Services — Clean Minimal Typography
    ═══════════════════════════════════════════════════ */
 
 .accordion {
@@ -8,10 +8,15 @@
 
 .accordion__item {
   border-bottom: 1px solid var(--gray-100);
+  transition: background 0.3s ease;
 }
 
 .accordion__item:first-child {
   border-top: 1px solid var(--gray-100);
+}
+
+.accordion__item--open {
+  background: rgba(22, 56, 92, 0.02);
 }
 
 .accordion__trigger {
@@ -19,7 +24,7 @@
   display: flex;
   align-items: center;
   gap: 28px;
-  padding: 36px 0;
+  padding: 32px 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -33,51 +38,65 @@
 }
 
 .accordion__number {
-  font-family: var(--font-body);
+  font-family: monospace;
   font-size: 14px;
-  font-weight: 600;
-  color: var(--gray-400);
-  min-width: 36px;
+  font-weight: 700;
+  color: var(--blue);
+  min-width: 32px;
 }
 
 .accordion__title {
   font-family: var(--font-heading);
-  font-size: clamp(26px, 3.5vw, 48px);
+  font-size: clamp(24px, 3.2vw, 44px);
   font-weight: 700;
   flex: 1;
   line-height: 1.15;
+  letter-spacing: -0.01em;
 }
 
 .accordion__icon {
-  font-size: 32px;
-  font-weight: 300;
-  color: var(--gray-400);
-  transition: transform var(--duration-fast) var(--ease-out-expo);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--blue);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-fast) var(--ease-out-expo), background 0.3s ease;
 }
 
 .accordion__item--open .accordion__icon {
-  transform: rotate(90deg);
+  background: var(--blue);
+  color: var(--white);
 }
 
 .accordion__content {
   overflow: hidden;
-  padding: 0 0 36px 64px;
+  padding: 0 0 32px clamp(48px, 6vw, 64px);
 }
 
 .accordion__content p {
-  font-size: 16px;
+  font-size: clamp(15px, 1.2vw, 19px);
   color: var(--gray-600);
-  max-width: 500px;
-  line-height: 1.7;
+  max-width: 720px;
+  line-height: 1.65;
+  font-weight: 400;
 }
 
 @media (max-width: 768px) {
   .accordion__trigger {
-    padding: 28px 0;
+    padding: 24px 0;
     gap: 16px;
   }
 
   .accordion__content {
-    padding: 0 0 28px 52px;
+    padding: 0 0 24px 44px;
+  }
+
+  .accordion__title {
+    font-size: 22px;
   }
 }

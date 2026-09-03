@@ -54,13 +54,13 @@ const TaglineSection = () => {
   };
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       className="tagline-section"
       onMouseMove={handleMouseMove}
     >
       {/* Dynamic Cursor Light Spotlight */}
-      <div 
+      <div
         className="tagline-section__spotlight"
         style={{
           background: `radial-gradient(600px circle at ${mousePos.x}% ${mousePos.y}%, rgba(82, 172, 255, 0.15), transparent 70%)`
@@ -179,17 +179,7 @@ const TaglineSection = () => {
 
       {/* Foreground Content */}
       <div className="tagline-section__inner container">
-        {/* Top Floating Badge */}
-        <motion.div
-          className="tagline-section__badge"
-          initial={{ opacity: 0, y: 25, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="tagline-section__pulse-dot" />
-          <span className="tagline-section__badge-text">PRODUCTION REDEFINED // ENGINE 2.0</span>
-        </motion.div>
+
 
         {/* Main Title & Subtitle */}
         <motion.div
@@ -200,8 +190,9 @@ const TaglineSection = () => {
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="tagline-section__heading">
+            Director-Led.{' '}
             <span className="tagline-section__highlight">
-              Motion-first
+              Motion-First.
               <svg className="tagline-section__underline-svg" viewBox="0 0 320 24" fill="none">
                 <motion.path
                   d="M5 16 C 90 4, 230 20, 315 8"
@@ -215,63 +206,16 @@ const TaglineSection = () => {
                 />
               </svg>
             </span>{' '}
-            storytelling without the studio bottleneck
+            AI-Powered Storytelling.
           </h2>
 
           <p className="tagline-section__subheading">
-            We fuse generative AI velocity with high-end motion design to deliver broadcast-grade video assets in hours instead of weeks.
+            Where filmmaking craft meets the possibilities of generative AI.
           </p>
         </motion.div>
 
-        {/* Glassmorphism Feature Cards Grid */}
-        <motion.div 
-          className="tagline-section__grid"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: false, amount: 0.2 }}
-          variants={{
-            hidden: { opacity: 0 },
-            show: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.15,
-                delayChildren: 0.35
-              }
-            }
-          }}
-        >
-          {featureCards.map((card, index) => (
-            <motion.div
-              key={index}
-              className="tagline-card"
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
-              }}
-              whileHover={{ y: -6, transition: { duration: 0.3 } }}
-            >
-              <div className="tagline-card__icon-wrap">
-                {card.icon}
-              </div>
-              <h3 className="tagline-card__title">{card.title}</h3>
-              <p className="tagline-card__desc">{card.desc}</p>
-              <div className="tagline-card__glow-border" />
-            </motion.div>
-          ))}
-        </motion.div>
 
-        {/* Viewfinder Corner HUD Accents */}
-        <div className="tagline-section__corners">
-          <div className="hud-label hud-label--tl">SYS // READY</div>
-          <svg className="corner corner--tl" viewBox="0 0 40 40" fill="none">
-            <path d="M0 40 V 10 Q 10 0 20 0 H 40" stroke="rgba(94, 212, 255, 0.5)" strokeWidth="2"/>
-          </svg>
-          
-          <div className="hud-label hud-label--br">REC ● 60 FPS</div>
-          <svg className="corner corner--br" viewBox="0 0 40 40" fill="none">
-            <path d="M40 0 V 30 Q 30 40 20 40 H 0" stroke="rgba(94, 212, 255, 0.5)" strokeWidth="2"/>
-          </svg>
-        </div>
+
       </div>
     </section>
   );

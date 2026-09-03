@@ -1,6 +1,7 @@
 import React from 'react';
 import FullScreenVideo from '../components/FullScreenVideo';
 import TaglineSection from '../components/TaglineSection';
+import ApproachSection from '../components/ApproachSection';
 import SectionRevealer from '../components/SectionRevealer';
 import ProjectSlider from '../components/ProjectSlider';
 import AccordionService from '../components/AccordionService';
@@ -20,10 +21,14 @@ const Home = () => {
       {/* 2. Blue overlap section with interactive SVG animations */}
       <TaglineSection />
 
-      {/* 3. Latest project slider */}
+      {/* 3. Our Approach — Interactive 8-step workflow pipeline */}
+      <ApproachSection />
+
+
+      {/* 4. Latest project slider */}
       {/* <ProjectSlider /> */}
 
-      {/* 4. Services accordion — white bg */}
+      {/* 5. Services accordion — white bg */}
       <SectionRevealer bg="white">
         <div className="services-home">
           <p className="services-home__label">What We Do</p>
@@ -34,7 +39,9 @@ const Home = () => {
         </div>
       </SectionRevealer>
 
-      {/* 5. CTA — blue bg */}
+
+
+      {/* 6. CTA — blue bg */}
       <CTASection
         tagline="Clear steps, faster loops, better outcomes"
         buttonText="Connect with us"

@@ -6,13 +6,13 @@ const services = [
   {
     id: 1,
     title: 'Service 1',
-    subtitle: 'AI-Powered Ad Creation',
+    subtitle: 'AI-Powered Cinema',
     description: 'From concept to final cut — powered by AI.',
   },
   {
     id: 2,
     title: 'Service 2',
-    subtitle: 'Motion Design & Animation',
+    subtitle: 'Web Developement',
     description: 'Smooth, scroll-stopping motion for every platform.',
   },
   {
@@ -21,12 +21,12 @@ const services = [
     subtitle: 'Creative Strategy',
     description: 'Data-informed creative that actually converts.',
   },
-  {
-    id: 4,
-    title: 'Service 4',
-    subtitle: 'Post-Production & VFX',
-    description: 'Polish and finesse without the studio overhead.',
-  },
+  // {
+  //   id: 4,
+  //   title: 'Service 4',
+  //   subtitle: 'Post-Production & VFX',
+  //   description: 'Polish and finesse without the studio overhead.',
+  // },
 ];
 
 const AccordionService = () => {

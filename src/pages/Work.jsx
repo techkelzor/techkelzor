@@ -15,7 +15,7 @@ const Work = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            Our Work
+            Our
           </motion.p>
           <motion.h1
             className="work-hero__title"
@@ -23,7 +23,7 @@ const Work = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            Selected Projects
+            Best Works
           </motion.h1>
         </div>
       </section>

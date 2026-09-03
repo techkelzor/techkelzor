@@ -1,15 +1,51 @@
 /* ═══════════════════════════════════════════════════
-   Tagline Section — Animated SVG & Luxury Typography
+   Tagline Section — Dynamic Glassmorphism & High-Contrast Motion
    ═══════════════════════════════════════════════════ */
 
 .tagline-section {
   position: relative;
-  background: var(--blue);
+  background: linear-gradient(145deg, #091726 0%, #16385C 50%, #0b223a 100%);
   min-height: 100vh;
+  padding: clamp(90px, 12vw, 160px) 0;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  color: var(--white);
+}
+
+/* Mouse Interactive Spotlight Layer */
+.tagline-section__spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* Ambient Radial Glow Orbs */
+.tagline-section__glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tagline-section__glow-orb--1 {
+  width: 500px;
+  height: 500px;
+  top: -100px;
+  left: -100px;
+  background: rgba(94, 212, 255, 0.18);
+}
+
+.tagline-section__glow-orb--2 {
+  width: 600px;
+  height: 600px;
+  bottom: -150px;
+  right: -100px;
+  background: rgba(22, 56, 92, 0.6);
 }
 
 /* Background Canvas */
@@ -26,82 +62,169 @@
   object-fit: cover;
 }
 
+/* Inner Container */
 .tagline-section__inner {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 32px;
+  gap: clamp(32px, 5vw, 56px);
   max-width: var(--container-max);
   padding: 0 var(--gutter);
+  width: 100%;
 }
 
-/* Badge */
+/* Badge with Live Pulse Dot */
 .tagline-section__badge {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 18px;
-  border-radius: 40px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  gap: 12px;
+  padding: 8px 20px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  color: var(--white);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tagline-section__pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5ed4ff;
+  box-shadow: 0 0 10px #5ed4ff, 0 0 20px #5ed4ff;
+  animation: pulse-glow 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.tagline-section__badge-text {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.tagline-section__badge-icon {
-  width: 14px;
-  height: 14px;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-/* Main Heading */
+/* Main Text & Subtext Wrap */
 .tagline-section__text-wrap {
-  max-width: 950px;
+  max-width: 1000px;
 }
 
 .tagline-section__heading {
   font-family: var(--font-heading);
-  font-size: clamp(42px, 6.5vw, 92px);
+  font-size: clamp(40px, 6.2vw, 86px);
   font-weight: 700;
   color: var(--white);
   line-height: 1.1;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
 }
 
 .tagline-section__highlight {
   position: relative;
   display: inline-block;
-  color: var(--white);
+  background: linear-gradient(135deg, #ffffff 0%, #9be4ff 50%, #5ed4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(94, 212, 255, 0.2));
 }
 
 .tagline-section__underline-svg {
   position: absolute;
-  bottom: -12px;
+  bottom: -10px;
   left: 0;
   width: 100%;
-  height: 20px;
+  height: 24px;
   overflow: visible;
   pointer-events: none;
 }
 
-/* Corner Viewfinder Accents */
+.tagline-section__subheading {
+  margin-top: 24px;
+  font-size: clamp(16px, 1.4vw, 22px);
+  line-height: 1.6;
+  color: rgba(235, 243, 255, 0.78);
+  max-width: 720px;
+  font-weight: 400;
+}
+
+/* Feature Cards Grid */
+.tagline-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.tagline-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.tagline-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(94, 212, 255, 0.4);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3), 0 0 20px rgba(94, 212, 255, 0.15);
+}
+
+.tagline-card__icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(94, 212, 255, 0.12);
+  border: 1px solid rgba(94, 212, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5ed4ff;
+}
+
+.tagline-card__icon-wrap svg {
+  width: 22px;
+  height: 22px;
+}
+
+.tagline-card__title {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+
+.tagline-card__desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Corner Viewfinder Accents & Telemetry Labels */
 .tagline-section__corners {
   position: absolute;
-  inset: -60px 0;
+  inset: -40px 0;
   pointer-events: none;
 }
 
 .corner {
   position: absolute;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
 }
 
 .corner--tl {
@@ -114,8 +237,46 @@
   right: var(--gutter);
 }
 
+.hud-label {
+  position: absolute;
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: rgba(94, 212, 255, 0.6);
+}
+
+.hud-label--tl {
+  top: 24px;
+  left: var(--gutter);
+}
+
+.hud-label--br {
+  bottom: 24px;
+  right: var(--gutter);
+}
+
+/* ── Responsive Breakpoints ───────────────────── */
+
+@media (max-width: 1024px) {
+  .tagline-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
+  .tagline-section {
+    padding: 80px 0;
+  }
+
+  .tagline-section__grid {
+    grid-template-columns: 1fr;
+  }
+
   .tagline-section__corners {
     display: none;
+  }
+
+  .tagline-card {
+    padding: 24px 20px;
   }
 }

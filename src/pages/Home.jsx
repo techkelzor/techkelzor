@@ -12,7 +12,7 @@ const Home = () => {
     <>
       {/* 1. Full-screen AI video hero */}
       <FullScreenVideo
-        videoSrc="/video/video.MP4"
+        videoSrc="/videos/ai.mp4"
         title="Kelzor"
         quote="AI ads, reimagined"
       />
@@ -21,7 +21,7 @@ const Home = () => {
       <TaglineSection />
 
       {/* 3. Latest project slider */}
-      <ProjectSlider />
+      {/* <ProjectSlider /> */}
 
       {/* 4. Services accordion — white bg */}
       <SectionRevealer bg="white">

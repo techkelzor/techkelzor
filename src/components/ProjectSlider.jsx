@@ -21,8 +21,7 @@ const ProjectSlider = () => {
   return (
     <section className="projects" ref={containerRef}>
       <div className="projects__header container">
-        <p className="projects__label">Latest Work</p>
-        <h2>Selected Projects</h2>
+        <h2>Our Works</h2>
       </div>
 
       <motion.div className="projects__track" style={{ x }}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import SectionRevealer from '../components/SectionRevealer';
 import CTASection from '../components/CTASection';
@@ -62,22 +62,80 @@ const whyKelzorItems = [
   }
 ];
 
-const limitations = [
-  'Locations',
-  'Casting',
-  'Weather',
-  'Travel',
-  'Sets',
-  'Equipment',
-  'Production scale'
-];
-
 const About = () => {
+  const heroRef = useRef(null);
+  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
+
+  const handleMouseMove = (e) => {
+    if (!heroRef.current) return;
+    const rect = heroRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setMousePos({ x, y });
+  };
+
+  const wordVariants = {
+    hidden: { y: '115%', opacity: 0, rotate: 2 },
+    visible: {
+      y: '0%',
+      opacity: 1,
+      rotate: 0,
+      transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
   return (
     <>
-      {/* Hero Section */}
-      <section className="about-hero">
-        <div className="container">
+      {/* State-of-the-Art Hero Section with Interactive Spotlight & Ambient SVGs */}
+      <section className="about-hero" ref={heroRef} onMouseMove={handleMouseMove}>
+        {/* Mouse Spotlight Track */}
+        <div
+          className="about-hero__spotlight"
+          style={{
+            background: `radial-gradient(650px circle at ${mousePos.x}% ${mousePos.y}%, rgba(22, 56, 92, 0.07), transparent 70%)`
+          }}
+        />
+
+        {/* Ambient Glow Orbs */}
+        <div className="about-hero__glow-orb about-hero__glow-orb--1" />
+        <div className="about-hero__glow-orb about-hero__glow-orb--2" />
+
+        {/* Animated Background Grid & Wave Lines */}
+        <div className="about-hero__svg-bg">
+          <svg className="about-hero__canvas" viewBox="0 0 1440 500" fill="none">
+            <motion.path
+              d="M -100 120 C 350 20, 850 380, 1540 80"
+              stroke="rgba(22, 56, 92, 0.08)"
+              strokeWidth="2"
+              strokeDasharray="8 10"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 2.2, ease: "easeInOut" }}
+            />
+            <motion.path
+              d="M -100 320 C 450 480, 950 100, 1540 280"
+              stroke="url(#about-hero-grad)"
+              strokeWidth="2.5"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 2.8, delay: 0.2, ease: "easeInOut" }}
+            />
+            <defs>
+              <linearGradient id="about-hero-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="rgba(22, 56, 92, 0.25)" />
+                <stop offset="50%" stopColor="#16385C" />
+                <stop offset="100%" stopColor="rgba(94, 212, 255, 0.3)" />
+              </linearGradient>
+              <linearGradient id="about-hero-underline-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#16385C" />
+                <stop offset="100%" stopColor="#3892e0" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <div className="container about-hero__content">
+          {/* Status Badge */}
           <motion.div
             className="about-hero__badge"
             initial={{ opacity: 0, y: 20 }}
@@ -85,17 +143,65 @@ const About = () => {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="about-hero__dot" />
-            <span>ABOUT KELZOR</span>
+            <span>ABOUT KELZOR STUDIO</span>
           </motion.div>
 
+          {/* Staggered Word Mask Reveal Title */}
           <motion.h1
             className="about-hero__title"
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } }
+            }}
           >
-            Expanding what filmmaking can be
+            <span className="about-hero__word-mask">
+              <motion.span className="about-hero__word" variants={wordVariants}>
+                Expanding
+              </motion.span>
+            </span>{' '}
+            <span className="about-hero__word-mask">
+              <motion.span className="about-hero__word" variants={wordVariants}>
+                what
+              </motion.span>
+            </span>{' '}
+            <span className="about-hero__word-mask">
+              <motion.span className="about-hero__word about-hero__highlight" variants={wordVariants}>
+                Filmmaking
+                <svg className="about-hero__underline-svg" viewBox="0 0 340 24" fill="none">
+                  <motion.path
+                    d="M5 16 C 90 4, 240 20, 335 8"
+                    stroke="url(#about-hero-underline-grad)"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 1.2, delay: 0.75, ease: 'easeInOut' }}
+                  />
+                </svg>
+              </motion.span>
+            </span>{' '}
+            <span className="about-hero__word-mask">
+              <motion.span className="about-hero__word" variants={wordVariants}>
+                can
+              </motion.span>
+            </span>{' '}
+            <span className="about-hero__word-mask">
+              <motion.span className="about-hero__word" variants={wordVariants}>
+                be.
+              </motion.span>
+            </span>
           </motion.h1>
+
+          {/* Subtext Description */}
+          <motion.p
+            className="about-hero__subtext"
+            initial={{ y: 25, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          >
+            A director-led AI production studio combining 13 years of traditional cinema craft with neural generative workflows to create high-impact commercial films.
+          </motion.p>
         </div>
       </section>
 
@@ -172,17 +278,6 @@ const About = () => {
           </div>
 
           <div className="about-promise__inner">
-            {/* <motion.div
-              className="about-promise__badge"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="about-promise__pulse-dot" />
-              <span>THE KELZOR PROMISE</span>
-            </motion.div> */}
-
             <motion.div
               className="about-promise__statement-box"
               initial={{ opacity: 0, y: 30 }}
@@ -209,45 +304,6 @@ const About = () => {
                 </span>
               </h2>
             </motion.div>
-
-            {/* <motion.div
-              className="about-promise__limitations-box"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.25 }}
-            >
-              <p className="about-promise__sublabel">
-                A production doesn't need to be limited by:
-              </p>
-
-              <div className="about-promise__tags">
-                {limitations.map((limit, idx) => (
-                  <motion.span
-                    key={idx}
-                    className="about-promise__tag"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.3 + idx * 0.06 }}
-                  >
-                    {limit}.
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div> */}
-
-            {/* <motion.div
-              className="about-promise__conclusion"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.45 }}
-            >
-              <p className="about-promise__conclusion-text">
-                Your imagination becomes the starting point.
-              </p>
-            </motion.div> */}
           </div>
         </div>
       </SectionRevealer>

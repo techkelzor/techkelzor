@@ -1,0 +1,116 @@
+/* ═══════════════════════════════════════════════════
+   CTA Section — Full page, bold
+   ═══════════════════════════════════════════════════ */
+
+.cta {
+  position: relative;
+  min-height: 100vh;
+  background: var(--blue);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.cta__bg {
+  position: absolute;
+  inset: -20% 0;
+  z-index: 0;
+}
+
+.cta__circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cta__circle--1 {
+  width: 700px;
+  height: 700px;
+  top: -250px;
+  right: -150px;
+  animation: pulse 8s ease-in-out infinite;
+}
+
+.cta__circle--2 {
+  width: 500px;
+  height: 500px;
+  bottom: -150px;
+  left: -100px;
+  animation: pulse 10s ease-in-out infinite 2s;
+}
+
+.cta__circle--3 {
+  width: 300px;
+  height: 300px;
+  top: 40%;
+  left: 60%;
+  animation: pulse 6s ease-in-out infinite 1s;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+.cta__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+  width: 100%;
+}
+
+.cta__tagline {
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 6vw, 84px);
+  font-weight: 700;
+  color: var(--white);
+  max-width: 850px;
+  line-height: 1.05;
+}
+
+.cta__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 44px;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background var(--duration-fast) ease,
+              border-color var(--duration-fast) ease,
+              transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.cta__button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-3px);
+}
+
+.cta__button svg {
+  transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.cta__button:hover svg {
+  transform: translateX(6px);
+}
+
+@media (max-width: 768px) {
+  .cta {
+    min-height: 70vh;
+  }
+}

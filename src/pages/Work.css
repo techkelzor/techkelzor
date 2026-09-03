@@ -1,0 +1,41 @@
+/* ═══════════════════════════════════════════════════
+   Work Page — Full page hero
+   ═══════════════════════════════════════════════════ */
+
+.work-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  padding-top: 180px;
+  padding-bottom: 80px;
+  background: var(--white);
+}
+
+.work-hero__label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 20px;
+}
+
+.work-hero__title {
+  color: var(--black);
+  font-weight: 800;
+}
+
+.work-more {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.work-more h2 {
+  color: var(--black);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.work-more p {
+  color: var(--gray-400);
+}

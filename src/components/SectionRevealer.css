@@ -1,0 +1,18 @@
+/* ═══════════════════════════════════════════════════
+   Section Revealer — Full page sections
+   ═══════════════════════════════════════════════════ */
+
+.section-revealer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.section-revealer__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--section-padding) var(--gutter);
+  width: 100%;
+}

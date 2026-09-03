@@ -1,0 +1,20 @@
+inspiration - [https://tamasolajos.com/, https://www.dentsucreative.com/] So our task is to create a sofesticated smooth scrolling minimal and smooth animation company website that Name is Kelzor , this company is main focus is creating AI ads a Ai ads production company. Techstack primary React and Tailwind and then for smooth animation along with a good splash loading screen and all you can use any library and our website is has to be look like Awwwards 7.5/10 rating and we have 2-3 Ai ads video too and Dont do one file coding split it in component, also dont use flashy and shiny colour, use this blue #16385C and then black white and also dont use 3d animation ,use "Indian Rs icon", avoid over text and paragraph only single line like that dentsucreative and card overallping scroll text revealing animation also use react router as 
+
+Our pages are Work, Services, About, Contact 
+
+now listen as we dont have enough content So we dont have to invent our own and also not filled page with lot of text content
+
+page start with our Ai video full screen and a single text up above maybe our company Name and a quote
+
+then we scroll a video screen is overallp with entire blue screen with smooth scrolling and a 2 line text "Motion-first storytelling without the studio bottleneck" black and white transpart colour revealing
+
+then a latest project slider with low text content and use Project 1 ,2 like that
+
+and then Our Services with title "Creative, technical, and AI services that actually connect"
+with accodian like entire screen layout and with scroll revealing animation with white backgroud use Service 1, 2 like that in white backgroud black text
+
+then bg chnage to again blue and "Clear steps, faster loops, better outcomes" text with a good something animation bg and cta button  connect with us or Contact us
+
+then a footer
+
+the section colour chaging must be smoooth use wise font not cyberbunk like dont use unreasoanble icon  

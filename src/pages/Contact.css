@@ -1,0 +1,146 @@
+/* ═══════════════════════════════════════════════════
+   Contact Page — Bold, full page
+   ═══════════════════════════════════════════════════ */
+
+.contact {
+  padding-top: 180px;
+  padding-bottom: var(--section-padding);
+  background: var(--white);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.contact__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.contact__label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 20px;
+}
+
+.contact__title {
+  color: var(--black);
+  font-weight: 800;
+  margin-bottom: 48px;
+  max-width: 500px;
+  font-size: 40px;
+}
+
+.contact__email {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--blue);
+  border-bottom: 2px solid transparent;
+  transition: border-color var(--duration-fast) ease;
+}
+
+.contact__email:hover {
+  border-color: var(--blue);
+}
+
+/* Form */
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact__field label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+
+.contact__field input,
+.contact__field textarea {
+  font-family: var(--font-body);
+  font-size: 16px;
+  padding: 16px 0;
+  border: none;
+  border-bottom: 1.5px solid var(--gray-200);
+  background: transparent;
+  color: var(--black);
+  outline: none;
+  transition: border-color var(--duration-fast) ease;
+  resize: none;
+}
+
+.contact__field input:focus,
+.contact__field textarea:focus {
+  border-color: var(--blue);
+}
+
+.contact__submit {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 44px;
+  background: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--duration-fast) ease,
+    transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.contact__submit:hover {
+  background: var(--blue-dark);
+  transform: translateY(-3px);
+}
+
+.contact__submit svg {
+  transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.contact__submit:hover svg {
+  transform: translateX(6px);
+}
+
+/* Success */
+.contact__success {
+  padding: 48px;
+  text-align: center;
+}
+
+.contact__success h3 {
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 16px;
+}
+
+.contact__success p {
+  color: var(--gray-400);
+}
+
+@media (max-width: 768px) {
+  .contact__inner {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+}

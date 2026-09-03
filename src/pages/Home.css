@@ -1,0 +1,67 @@
+/* ═══════════════════════════════════════════════════
+   Home Page — Full page sections
+   ═══════════════════════════════════════════════════ */
+
+/* ── Tagline Section (Blue overlap) ─────────── */
+
+.tagline-section {
+  background: var(--blue);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.tagline-section__inner {
+  position: relative;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.tagline-section__text {
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 6vw, 90px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+}
+
+.tagline-section__text--ghost {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgba(255, 255, 255, 0.08);
+  z-index: 0;
+  clip-path: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── Services on Home ────────────────────────── */
+
+.services-home {
+  padding: 40px 0;
+}
+
+.services-home__label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 20px;
+}
+
+.services-home__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4.5vw, 60px);
+  font-weight: 700;
+  color: var(--black);
+  max-width: 700px;
+  margin-bottom: 72px;
+  line-height: 1.1;
+}

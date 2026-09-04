@@ -30,22 +30,7 @@ const FullScreenVideo = ({ videoSrc, title = "Kelzor", quote = "AI ads, reimagin
       {/* Hero Overlay */}
       <motion.div className="hero__overlay" style={{ opacity: overlayOpacity }} />
 
-      {/* Rotating Background Vector Shape Rings */}
-      <div className="hero__vector-bg">
-        <motion.svg
-          className="hero__shape-ring"
-          viewBox="0 0 600 600"
-          fill="none"
-          initial={{ rotate: 0 }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-        >
-          <circle cx="300" cy="300" r="260" stroke="rgba(94, 212, 255, 0.15)" strokeWidth="1.5" strokeDasharray="12 12" />
-          <circle cx="300" cy="300" r="190" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1" strokeDasharray="6 8" />
-          <polygon points="300,30 315,50 285,50" fill="#5ed4ff" opacity="0.6" />
-          <polygon points="300,570 315,550 285,550" fill="#5ed4ff" opacity="0.6" />
-        </motion.svg>
-      </div>
+
 
       {/* Minimal HUD Viewfinder Corner Brackets & Telemetry */}
       <div className="hero__hud">

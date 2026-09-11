@@ -6,10 +6,39 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #000000;
+  background: radial-gradient(ellipse at center, #070d18 0%, #000000 85%);
+}
+
+/* Video Reveal Container & Beam */
+.hero__video-reveal-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  will-change: clip-path, filter, transform;
+  background-color: #000000;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.9) inset;
+}
+
+.hero__video-beam {
+  position: absolute;
+  inset: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(94, 212, 255, 0.08) 35%,
+      rgba(255, 255, 255, 0.45) 50%,
+      rgba(94, 212, 255, 0.15) 65%,
+      transparent 100%);
+  transform: skewX(-25deg);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Video Wrap */
@@ -30,11 +59,9 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(8, 20, 34, 0.25) 0%,
-    rgba(8, 20, 34, 0.65) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(8, 20, 34, 0.25) 0%,
+      rgba(8, 20, 34, 0.65) 100%);
 }
 
 /* Background Rotating Concentric Vector Shapes */
@@ -112,6 +139,9 @@
   color: var(--white);
   letter-spacing: -0.03em;
   line-height: 0.9;
+  perspective: 1000px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero__title-styled {
@@ -122,12 +152,57 @@
   -webkit-text-fill-color: transparent;
 }
 
+.hero__word-wrap {
+  display: inline-flex;
+  align-items: center;
+}
+
+.hero__space {
+  display: inline-block;
+  width: 0.25em;
+}
+
+.hero__letter-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  will-change: transform, opacity;
+}
+
+.hero__letter {
+  position: relative;
+  display: inline-block;
+  transform-origin: 50% 50%;
+  will-change: transform;
+  cursor: pointer;
+  transition: filter 0.25s ease;
+}
+
+.hero__letter:hover {
+  filter: drop-shadow(0 0 20px rgba(94, 212, 255, 0.9));
+}
+
 .hero__z-wrap {
   position: relative;
   display: inline-block;
+  transform-origin: 50% 50%;
   color: #5ed4ff;
   -webkit-text-fill-color: #5ed4ff;
-  text-shadow: 0 0 30px rgba(94, 212, 255, 0.7);
+  text-shadow: 0 0 35px rgba(94, 212, 255, 0.85);
+  animation: zGlowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes zGlowPulse {
+  0% {
+    text-shadow: 0 0 20px rgba(94, 212, 255, 0.6);
+    filter: drop-shadow(0 0 8px rgba(94, 212, 255, 0.4));
+  }
+
+  100% {
+    text-shadow: 0 0 45px rgba(94, 212, 255, 1), 0 0 80px rgba(94, 212, 255, 0.5);
+    filter: drop-shadow(0 0 18px rgba(94, 212, 255, 0.8));
+  }
 }
 
 .hero__z-vector-shape {
@@ -145,6 +220,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  perspective: 800px;
 }
 
 .hero__quote {
@@ -153,6 +229,17 @@
   font-weight: 300;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4em;
+}
+
+.hero__quote-word {
+  display: inline-block;
+  transform-origin: 50% 0%;
+  will-change: transform, opacity;
+  cursor: default;
 }
 
 .hero__quote-underline-svg {
@@ -200,9 +287,17 @@
 }
 
 @keyframes scrollLine {
-  0% { top: -100%; }
-  50% { top: 0; }
-  100% { top: 100%; }
+  0% {
+    top: -100%;
+  }
+
+  50% {
+    top: 0;
+  }
+
+  100% {
+    top: 100%;
+  }
 }
 
 @media (max-width: 768px) {

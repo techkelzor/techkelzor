@@ -35,7 +35,7 @@ const Footer = () => {
 
         <div className="footer__bottom">
           <p className="footer__copy">© {currentYear} Kelzor. All rights reserved.</p>
-          <p className="footer__currency">₹ INR</p>
+          {/* <p className="footer__currency">₹ INR</p> */}
         </div>
       </div>
     </footer>

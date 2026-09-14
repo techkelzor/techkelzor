@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
+import { LiquidLens } from './liquid-lens';
 import './ApproachSection.css';
 
 const steps = [
@@ -84,35 +85,49 @@ const ApproachSection = () => {
             <span>OUR APPROACH</span>
           </div>
 
-          <h2 className="approach-compact__heading">
-            Think Like a Filmmaker.{' '}
-            <span className="approach-compact__highlight">
-              Create Like the Future.
-              <svg className="approach-compact__underline-svg" viewBox="0 0 340 24" fill="none">
-                <motion.path
-                  d="M5 16 C 90 4, 240 20, 335 8"
-                  stroke="url(#compact-approach-grad)"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{ duration: 1.2, delay: 0.3 }}
-                />
-                <defs>
-                  <linearGradient id="compact-approach-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#16385C" />
-                    <stop offset="100%" stopColor="#3892e0" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </span>
-          </h2>
+          <LiquidLens
+            radius={95}
+            strength={0.14}
+            magnification={1.12}
+            chromaticAberration={0.003}
+          >
+            <h2 className="approach-compact__heading">
+              Think Like a Filmmaker.{' '}
+              <span className="approach-compact__highlight">
+                Create Like the Future.
+                <svg className="approach-compact__underline-svg" viewBox="0 0 340 24" fill="none">
+                  <motion.path
+                    d="M5 16 C 90 4, 240 20, 335 8"
+                    stroke="url(#compact-approach-grad)"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    whileInView={{ pathLength: 1 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
+                  />
+                  <defs>
+                    <linearGradient id="compact-approach-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#16385C" />
+                      <stop offset="100%" stopColor="#3892e0" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+            </h2>
+          </LiquidLens>
 
-          <div className="approach-compact__quote-box">
-            <span className="approach-compact__quote-text">We don't start with a prompt.</span>
-            <span className="approach-compact__idea-badge">We start with an idea.</span>
-          </div>
+          <LiquidLens
+            radius={75}
+            strength={0.12}
+            magnification={1.10}
+            chromaticAberration={0.0025}
+          >
+            <div className="approach-compact__quote-box">
+              <span className="approach-compact__quote-text">We don't start with a prompt.</span>
+              <span className="approach-compact__idea-badge">We start with an idea.</span>
+            </div>
+          </LiquidLens>
         </motion.div>
 
         {/* Compact Horizontal 5-Step Pipeline with Animated SVG Connecting Path */}

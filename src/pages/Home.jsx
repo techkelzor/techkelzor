@@ -6,6 +6,7 @@ import SectionRevealer from '../components/SectionRevealer';
 import ProjectSlider from '../components/ProjectSlider';
 import AccordionService from '../components/AccordionService';
 import CTASection from '../components/CTASection';
+import { LiquidLens } from '../components/liquid-lens';
 import './Home.css';
 
 const Home = () => {
@@ -31,10 +32,14 @@ const Home = () => {
       {/* 5. Services accordion — white bg */}
       <SectionRevealer bg="white">
         <div className="services-home">
-          <p className="services-home__label">What We Do</p>
-          <h2 className="services-home__heading">
-            Creative, technical, and AI services that actually connect
-          </h2>
+          <LiquidLens radius={65} strength={0.11} magnification={1.08}>
+            <p className="services-home__label">What We Do</p>
+          </LiquidLens>
+          <LiquidLens radius={95} strength={0.14} magnification={1.12}>
+            <h2 className="services-home__heading">
+              Creative, technical, and AI services that actually connect
+            </h2>
+          </LiquidLens>
           <AccordionService />
         </div>
       </SectionRevealer>

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { LiquidLens } from './liquid-lens';
 import './CTASection.css';
 
 const CTASection = ({
@@ -66,27 +67,43 @@ const CTASection = ({
 
 
         {/* Main Heading Tagline */}
-        <motion.h2
-          className="cta__tagline"
+        <motion.div
           initial={{ y: 35, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="cta__tagline-text">{tagline}</span>
-        </motion.h2>
+          <LiquidLens
+            radius={95}
+            strength={0.14}
+            magnification={1.12}
+            chromaticAberration={0.003}
+          >
+            <h2 className="cta__tagline">
+              <span className="cta__tagline-text">{tagline}</span>
+            </h2>
+          </LiquidLens>
+        </motion.div>
 
         {/* Supporting Narrative */}
         {subtext && (
-          <motion.p
-            className="cta__subtext"
+          <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            {subtext}
-          </motion.p>
+            <LiquidLens
+              radius={75}
+              strength={0.12}
+              magnification={1.10}
+              chromaticAberration={0.0025}
+            >
+              <p className="cta__subtext">
+                {subtext}
+              </p>
+            </LiquidLens>
+          </motion.div>
         )}
 
         {/* Interactive Action Area */}

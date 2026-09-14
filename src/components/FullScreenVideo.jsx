@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { LiquidLens } from './liquid-lens';
 import './FullScreenVideo.css';
 
 const FullScreenVideo = ({ videoSrc, title = "Kelzor", quote = "AI ads, reimagined" }) => {
@@ -85,203 +86,57 @@ const FullScreenVideo = ({ videoSrc, title = "Kelzor", quote = "AI ads, reimagin
 
       {/* Hero Center Title & Quote */}
       <motion.div className="hero__content" style={{ y: titleY }}>
-        <motion.h1
-          className="hero__title"
-          initial="hidden"
-          animate="visible"
+        <motion.div
+          initial={{ opacity: 0, y: 35, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="hero__title-lens-wrap"
         >
-          {title.toUpperCase() === "KELZOR" ? (
-            <span className="hero__title-styled">
-              {['K', 'E', 'L', 'Z', 'O', 'R'].map((char, index) => {
-                const isZ = char === 'Z';
+          {/* <LiquidLens
+            type="typography"
+            text={title.toUpperCase()}
+            fontFamily="'Playfair Display', Georgia, serif"
+            fontWeight="800"
+            fontSize={"clamp(80px, 12vw, 200px)"}
+            letterSpacing="-0.03em"
+            color={['#ffffff', '#e2f7ff', '#5ed4ff', '#ffffff']}
+            radius={110}
+            strength={0.15}
+            magnification={1.12}
+            chromaticAberration={0.0035}
+            lerpFactor={0.15}
+            className="hero__title-lens"
+          > */}
+          <h1 className="hero__title">
+            <span className="hero__title-styled">{title.toUpperCase()}</span>
+          </h1>
+          {/* </LiquidLens> */}
+        </motion.div>
 
-                if (isZ) {
-                  return (
-                    <motion.span
-                      key={index}
-                      className="hero__letter-slot"
-                      initial={{
-                        opacity: 0,
-                        scale: 0,
-                        x: 0,
-                        rotate: 0,
-                      }}
-                      animate={{
-                        opacity: [0, 1, 1, 1, 1],
-                        scale: [0, 1.45, 1.15, 1.15, 1],
-                        x: [0, 0, -100, -100, 0],
-                        rotate: [0, 0, -16, -16, 0],
-                      }}
-                      transition={{
-                        duration: 1.6,
-                        delay: 0.35,
-                        times: [0, 0.25, 0.55, 0.75, 1],
-                        ease: [0.16, 1, 0.3, 1],
-                      }}
-                    >
-                      <motion.span
-                        className="hero__z-wrap hero__letter"
-                        whileHover={{
-                          scale: 1.14,
-                          y: -6,
-                        }}
-                        transition={{
-                          type: 'spring',
-                          stiffness: 400,
-                          damping: 25,
-                        }}
-                      >
-                        {char}
-                      </motion.span>
-                    </motion.span>
-                  );
-                }
-
-                // Surrounding letters: 'K', 'E', 'L' and 'O', 'R' appear once Z docks
-                const orderIndex = index < 3 ? index : index - 1;
-                const letterDelay = 1.95 + orderIndex * 0.08;
-
-                return (
-                  <motion.span
-                    key={index}
-                    className="hero__letter-slot"
-                    initial={{
-                      opacity: 0,
-                      y: -50,
-                      scale: 0.6,
-                      rotate: index % 2 === 0 ? -18 : 18,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      rotate: 0,
-                    }}
-                    transition={{
-                      delay: letterDelay,
-                      type: 'spring',
-                      damping: 11,
-                      stiffness: 130,
-                      mass: 0.75,
-                    }}
-                  >
-                    <motion.span
-                      className="hero__letter"
-                      whileHover={{
-                        scale: 1.1,
-                        y: -5,
-                      }}
-                      transition={{
-                        type: 'spring',
-                        stiffness: 400,
-                        damping: 25,
-                      }}
-                    >
-                      {char}
-                    </motion.span>
-                  </motion.span>
-                );
-              })}
-            </span>
-          ) : (
-            <span className="hero__title-styled">
-              {title.split(" ").map((word, wordIndex) => (
-                <span key={wordIndex} className="hero__word-wrap">
-                  {word.split("").map((char, charIndex) => (
-                    <motion.span
-                      key={charIndex}
-                      custom={wordIndex * 4 + charIndex}
-                      variants={{
-                        hidden: {
-                          opacity: 0,
-                          y: -50,
-                          scale: 0.6,
-                          filter: 'blur(10px)',
-                        },
-                        visible: (i) => ({
-                          opacity: 1,
-                          y: 0,
-                          scale: 1,
-                          filter: 'blur(0px)',
-                          transition: {
-                            delay: 0.3 + i * 0.08,
-                            type: 'spring',
-                            damping: 11,
-                            stiffness: 130,
-                            mass: 0.75,
-                          },
-                        }),
-                      }}
-                      whileHover={{
-                        scale: 1.12,
-                        rotate: [0, -8, 8, -4, 0],
-                        transition: { duration: 0.45 },
-                      }}
-                      className="hero__letter"
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
-                  {wordIndex < title.split(" ").length - 1 && <span className="hero__space">&nbsp;</span>}
-                </span>
-              ))}
-            </span>
-          )}
-        </motion.h1>
-
-        {/* Quote with Word-by-Word Drop & Swing + SVG Underline Accent */}
+        {/* Quote with Word-by-Word Drop & SVG Underline Accent */}
         <div className="hero__quote-box">
-          <motion.p
-            className="hero__quote"
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.12,
-                  delayChildren: 2.45,
-                },
-              },
-            }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            {quote.split(" ").map((word, i) => (
-              <motion.span
-                key={i}
-                custom={i}
-                variants={{
-                  hidden: (idx) => ({
-                    opacity: 0,
-                    y: -35,
-                    rotate: idx % 2 === 0 ? -12 : 12,
-                    scale: 0.85,
-                    filter: 'blur(6px)',
-                  }),
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    rotate: 0,
-                    scale: 1,
-                    filter: 'blur(0px)',
-                    transition: {
-                      type: 'spring',
-                      damping: 12,
-                      stiffness: 130,
-                    },
-                  },
-                }}
-                whileHover={{
-                  y: -3,
-                  scale: 1.05,
-                  transition: { duration: 0.2 },
-                }}
-                className="hero__quote-word"
-              >
-                {word}
-              </motion.span>
-            ))}
-          </motion.p>
+            <LiquidLens
+              type="typography"
+              text={quote.toUpperCase()}
+              fontFamily="'Inter', system-ui, sans-serif"
+              fontWeight="300"
+              letterSpacing="0.18em"
+              color={['rgba(255, 255, 255, 0.9)', '#8ee2ff']}
+              radius={80}
+              strength={0.12}
+              magnification={1.10}
+              chromaticAberration={0.0025}
+              lerpFactor={0.16}
+              className="hero__quote-lens"
+            >
+              <p className="hero__quote">{quote}</p>
+            </LiquidLens>
+          </motion.div>
           <svg className="hero__quote-underline-svg" viewBox="0 0 240 16" fill="none">
             <motion.path
               d="M 5 10 C 60 2, 180 14, 235 6"
@@ -290,7 +145,7 @@ const FullScreenVideo = ({ videoSrc, title = "Kelzor", quote = "AI ads, reimagin
               strokeLinecap="round"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 1.2, delay: 2.8 }}
+              transition={{ duration: 1.2, delay: 1.0 }}
             />
             <defs>
               <linearGradient id="hero-quote-grad" x1="0%" y1="0%" x2="100%" y2="0%">

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { LiquidLens } from './liquid-lens';
 import './TaglineSection.css';
 
 const featureCards = [
@@ -189,29 +190,43 @@ const TaglineSection = () => {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="tagline-section__heading">
-            Director-Led.{' '}
-            <span className="tagline-section__highlight">
-              Motion-First.
-              <svg className="tagline-section__underline-svg" viewBox="0 0 320 24" fill="none">
-                <motion.path
-                  d="M5 16 C 90 4, 230 20, 315 8"
-                  stroke="url(#underline-gradient)"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{ duration: 1.2, delay: 0.4, ease: 'easeInOut' }}
-                />
-              </svg>
-            </span>{' '}
-            AI-Powered Storytelling.
-          </h2>
+          <LiquidLens
+            radius={95}
+            strength={0.14}
+            magnification={1.12}
+            chromaticAberration={0.003}
+          >
+            <h2 className="tagline-section__heading">
+              Director-Led.{' '}
+              <span className="tagline-section__highlight">
+                Motion-First.
+                <svg className="tagline-section__underline-svg" viewBox="0 0 320 24" fill="none">
+                  <motion.path
+                    d="M5 16 C 90 4, 230 20, 315 8"
+                    stroke="url(#underline-gradient)"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    whileInView={{ pathLength: 1 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 1.2, delay: 0.4, ease: 'easeInOut' }}
+                  />
+                </svg>
+              </span>{' '}
+              AI-Powered Storytelling.
+            </h2>
+          </LiquidLens>
 
-          <p className="tagline-section__subheading">
-            Where filmmaking craft meets the possibilities of generative AI.
-          </p>
+          <LiquidLens
+            radius={75}
+            strength={0.12}
+            magnification={1.10}
+            chromaticAberration={0.0025}
+          >
+            <p className="tagline-section__subheading">
+              Where filmmaking craft meets the possibilities of generative AI.
+            </p>
+          </LiquidLens>
         </motion.div>
 
 

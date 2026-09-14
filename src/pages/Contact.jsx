@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { LiquidLens } from '../components/liquid-lens';
 import './Contact.css';
 
 const Contact = () => {
@@ -15,22 +16,26 @@ const Contact = () => {
       <div className="container">
         <div className="contact__inner">
           <div className="contact__info">
-            <motion.p
-              className="contact__label"
+            <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              Get in Touch
-            </motion.p>
-            <motion.h1
-              className="contact__title"
+              <LiquidLens radius={65} strength={0.11} magnification={1.08}>
+                <p className="contact__label">Get in Touch</p>
+              </LiquidLens>
+            </motion.div>
+            <motion.div
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             >
-              Let's create something together
-            </motion.h1>
+              <LiquidLens radius={95} strength={0.14} magnification={1.12}>
+                <h1 className="contact__title">
+                  Let's create something together
+                </h1>
+              </LiquidLens>
+            </motion.div>
             <motion.div
               className="contact__details"
               initial={{ y: 20, opacity: 0 }}
